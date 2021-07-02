@@ -3,9 +3,6 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyExchange from './serviceLogic.js'
-import { ConcatenationScope } from 'webpack';
-
-// body.conversion_rates.currencyCode
 
 function conversion(response) {
   let newValue = response.conversion_rates.${code} * dollar;
