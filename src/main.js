@@ -17,6 +17,12 @@ function conversion(response) {
     }
 }
 
+function anyConversion(response) {
+  let rate = response.conversion_rate
+  let value = $("moneyInput").val('')
+  let mathOutput = 
+}
+
 function clearFields() {
   $("#USD").val('');
   $('#code').val('');
@@ -38,5 +44,17 @@ $(document).ready(function(){
       $("#showHere").html(`There was an error getting the current rates in our backend: ${error.message}`)
       })
   })
+
+  $('#form2').submit(function() {
+    event.preventDefault();
+    let val1 = $("value1").val()
+    let val2 = $('value2').val()
+    CurrencyExchange.anyRate(val1, val2);
+      .then(function(response){
+        anyConversion(response)
+      })
+  })
+
+
 })
 
