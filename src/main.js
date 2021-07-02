@@ -10,30 +10,31 @@ function conversion(response) {
   let code = $("#code").val();
   if (typeof(response.conversion_rates[code]) === "number") {
     let newValue = response.conversion_rates[code] * dollar;
-    let finalValue = newValue.toFixed(2)
-    $('#showHere').html("your " + dollar + " has been converted to " + finalValue + " " + code + ". 1 US dollar is equal to " + response.conversion_rates[code] + " " + code)
+    let finalValue = newValue.toFixed(2);
+    $('#showHere').html("your " + dollar + " has been converted to " + finalValue + " " + code + ". 1 US dollar is equal to " + response.conversion_rates[code] + " " + code);
     } else {
     $('#showHere').html("Your country code is wrong!")
     }
 }
 
 function anyConversion(response, val1, val2) {
-  let rate = response.conversion_rate
-  console.log(rate)
-  let money = $("#money").val()
-  console.log(money)
-  let mathOutput = money * rate
+  let rate = response.conversion_rate;
+  let money = $("#money").val();
+  let mathOutput = money * rate;
   if (typeof(response.conversion_rate) === "number") {
-    $("#showHere2").html("your " + money + " in " + val1 + " has been converted to " + mathOutput + " in " + val2 + ".")
+    $("#showHere2").html("Your " + money + " in " + val1 + " has been converted to " + mathOutput + " in " + val2 + ".");
   } else {
-    $("#showHere2").html("One of your codes must be wrong!")
+    $("#showHere2").html("One of your codes must be wrong!");
   }
 }
 
-// function clearFields() {
-//   $("#USD").val('');
-//   $('#code').val('');
-// }
+function clearFields() {
+  $("#USD").val('');
+  $('#code').val('');
+  $("#currency1").val('');
+  $('#currency2').val('');
+  $('#money').val('');
+}
 
 Codes.forEach(function(element) {
   $("#sideBar").append("<li>" + element + "</li>")
@@ -45,6 +46,7 @@ $(document).ready(function(){
     CurrencyExchange.getRates()
       .then(function(response) {
         conversion(response)
+        clearFields()
       })
       .catch(function(error) {
       $("#showHere").html(`There was an error getting the current rates in our backend: ${error}`)
@@ -58,6 +60,7 @@ $(document).ready(function(){
     CurrencyExchange.anyRate(val1, val2)
       .then(function(response){
         anyConversion(response, val1, val2)
+        clearFields()
       })
       .catch(function(error){
         $("#showHere2").html(`There was an error in our backend: ${error}`)
