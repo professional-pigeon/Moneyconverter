@@ -18,16 +18,29 @@
         </ul>
       </div>
       <div id="right" class="col-8">
-        <h1></h1>
+        <h4>US to money abroad</h4>
         <form id="form1">
           <label for="USD">How much money do you want to convert?</label>
           <input type="number" id="USD" required><br><br>
           <label for="code">Type in the three letter country code as it appears in the scrollbar. Example: NZD.</label>
           <input type="text" id="code" required>
-          <button type="submit" class="btn btn-primary">Pass it along to the math wizards.</button>
+          <button type="submit" class="btn btn-primary" id="button1">Pass it along to the math wizards.</button>
         </form>
-        <br>
         <p id="showHere"></p>
+        <br>
+        <h4>Any currency</h4>
+        <form id="form2">
+          <label for="money">How much money do you want to convert?</label>
+          <input type="number" id="money" required>
+          
+          <label for="currency1">Type in the three letter country code as it appears in the scrollbar for the curreny you have. Example: NZD.</label>
+          <input type="text" id="currency1" required>
+          
+          <label for="currency2">Type in the three letter country code as it appears in the scrollbar for the curreny you'd like it to be changed to</label>
+          <input type="text" id="currency2" required>
+          <button type="submit" class="btn btn-primary" form="form2" id="button2">Pass it along to the math wizards.</button>
+        </form>
+        <p id="showHere2"></p>
       </div>
     </div>
   </div>

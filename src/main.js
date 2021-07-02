@@ -17,16 +17,23 @@ function conversion(response) {
     }
 }
 
-function anyConversion(response) {
+function anyConversion(response, val1, val2) {
   let rate = response.conversion_rate
-  let value = $("moneyInput").val('')
-  let mathOutput = 
+  console.log(rate)
+  let money = $("#money").val()
+  console.log(money)
+  let mathOutput = money * rate
+  if (typeof(response.conversion_rate) === "number") {
+    $("#showHere2").html("your " + money + " in " + val1 + " has been converted to " + mathOutput + " in " + val2 + ".")
+  } else {
+    $("#showHere2").html("One of your codes must be wrong!")
+  }
 }
 
-function clearFields() {
-  $("#USD").val('');
-  $('#code').val('');
-}
+// function clearFields() {
+//   $("#USD").val('');
+//   $('#code').val('');
+// }
 
 Codes.forEach(function(element) {
   $("#sideBar").append("<li>" + element + "</li>")
@@ -38,20 +45,22 @@ $(document).ready(function(){
     CurrencyExchange.getRates()
       .then(function(response) {
         conversion(response)
-        clearFields();
       })
       .catch(function(error) {
-      $("#showHere").html(`There was an error getting the current rates in our backend: ${error.message}`)
+      $("#showHere").html(`There was an error getting the current rates in our backend: ${error}`)
       })
   })
 
-  $('#form2').submit(function() {
+  $('#form2').submit(function(){
     event.preventDefault();
-    let val1 = $("value1").val()
-    let val2 = $('value2').val()
-    CurrencyExchange.anyRate(val1, val2);
+    let val1 = $("#currency1").val();
+    let val2 = $("#currency2").val();
+    CurrencyExchange.anyRate(val1, val2)
       .then(function(response){
-        anyConversion(response)
+        anyConversion(response, val1, val2)
+      })
+      .catch(function(error){
+        $("#showHere2").html(`There was an error in our backend: ${error}`)
       })
   })
 
