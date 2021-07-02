@@ -13,7 +13,7 @@ function conversion(response) {
     let finalValue = newValue.toFixed(2)
     $('#showHere').html("your " + dollar + " has been converted to " + finalValue + " " + code + ". 1 US dollar is equal to " + response.conversion_rates[code] + " " + code)
     } else {
-    $('#showHere').html("your country code is wrong!")
+    $('#showHere').html("Your country code is wrong!")
     }
 }
 
@@ -28,7 +28,9 @@ $(document).ready(function(){
       .then(function(response) {
         conversion(response)
       })
-
+      .catch(function(error) {
+      $("#showHere").html(`There was an error getting the current rates in our backend: ${error.message}`)
+      })
   })
 })
 

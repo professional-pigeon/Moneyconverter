@@ -1,7 +1,4 @@
 #side {
-  bottom: 0;
-  position: left;
   overflow-y: scroll;
-  width: 400px;
-  max-height: 900px;
+  max-height: 500px;
 }
