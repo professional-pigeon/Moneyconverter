@@ -12,9 +12,9 @@ function conversion(response) {
     let newValue = response.conversion_rates[code] * dollar;
     let finalValue = newValue.toFixed(2);
     $('#showHere').html("your " + dollar + " has been converted to " + finalValue + " " + code + ". 1 US dollar is equal to " + response.conversion_rates[code] + " " + code);
-    } else {
+  } else {
     $('#showHere').html("Your country code is wrong!")
-    }
+  }
 }
 
 function anyConversion(response, val1, val2) {
@@ -53,16 +53,16 @@ $(document).ready(function(){
       })
   })
 
-  $('#form2').submit(function(){
+  $('#form2').submit(function() {
     event.preventDefault();
     let val1 = $("#currency1").val();
     let val2 = $("#currency2").val();
     CurrencyExchange.anyRate(val1, val2)
-      .then(function(response){
+      .then(function(response) {
         anyConversion(response, val1, val2)
         clearFields()
       })
-      .catch(function(error){
+      .catch(function(error) { // DOES NOT CATCH
         $("#showHere2").html(`There was an error in our backend: ${error}`)
       })
   })
