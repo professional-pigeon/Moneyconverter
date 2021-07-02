@@ -7,11 +7,13 @@ import CurrencyExchange from './serviceLogic.js'
 function conversion(response) {
   let dollar = $('#USD').val();
   let code = $("#code").val();
-  let newValue = response.conversion_rates[code] * dollar;
-  console.log(dollar);
-  console.log(code);
-  console.log(newValue)
-  $('#showHere').html("your " + dollar + " has been converted to " + newValue + " " + code + ".")
+  if (typeof(response.conversion_rates[code]) === "number") {
+    let newValue = response.conversion_rates[code] * dollar;
+    let finalValue = newValue.toFixed(2)
+    $('#showHere').html("your " + dollar + " has been converted to " + finalValue + " " + code + ". 1 US dollar is equal to " + response.conversion_rates[code] + " " + code)
+    } else {
+    $('#showHere').html("your country code is wrong!")
+    }
 }
 
 $(document).ready(function(){
@@ -24,3 +26,4 @@ $(document).ready(function(){
 
   })
 })
+
