@@ -26,22 +26,22 @@
 
 ## Description
 
-This is practice with constructors and prototype inheritance. Also creates custom methods for pizza service.
+This is practice with fetch commands.
 
 ## Setup/Installation Requirements
 
-* Clone this repository from github to your desktop: [Github link for this project](https://github.com/professional-pigeon/Pizza-orderer)
+* Clone this repository from github to your desktop: [Github link for this project](https://github.com/professional-pigeon/Moneyconverter)
 * navigate to the top level of the directory
-* install [Node package manager](https://nodejs.org/en/download/)
+* follow directions to install [Node package manager](https://nodejs.org/en/download/)
 * run terminal command "npm install" to install relevant webpacks from package.json file.
 * create a .env in the root level of the directory
 * go to [exchangerate-api website](https://www.exchangerate-api.com/), click "GET FREE KEY", create an account to get your free API key. 
-* In the .env file create this line API_KEY="the api key you created goes here"
-* type "npm run build" and then "npm run start" and it should open the webpage with the appropriate functionality.
+* In the .env file write this line "API_KEY=the api key you created goes here"
+* In the terminal"npm run build" and then "npm run start" and it should open the webpage with the appropriate functionality.
 
 ## Known Bugs
 
-* No known bugs
+* Does not return the appropriate catch error message with the second function.
 
 ## License
 
