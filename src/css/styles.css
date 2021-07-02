@@ -1,4 +1,15 @@
+body {
+  background-color: blanchedalmond;
+}
+
 #side {
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 600px;
+  display: block;
+  border: solid black;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: rgb(87, 153, 20);
 }

@@ -17,6 +17,11 @@ function conversion(response) {
     }
 }
 
+function clearFields() {
+  $("#USD").val('');
+  $('#code').val('');
+}
+
 Codes.forEach(function(element) {
   $("#sideBar").append("<li>" + element + "</li>")
 })
@@ -27,6 +32,7 @@ $(document).ready(function(){
     CurrencyExchange.getRates()
       .then(function(response) {
         conversion(response)
+        clearFields();
       })
       .catch(function(error) {
       $("#showHere").html(`There was an error getting the current rates in our backend: ${error.message}`)
